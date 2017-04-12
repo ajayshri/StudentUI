@@ -1,0 +1,33 @@
+
+
+
+.wrapper {	
+	margin-top: 20px;
+  margin-bottom: 80px;
+	 max-width: 380px;
+	padding: 15px 35px 45px;
+	margin: 80px auto;
+	border: 1px solid rgba(0,0,0,0.1);  
+	background-color: #fff;
+	
+}
+
+
+  .form-signin-heading,
+	.checkbox {
+	  margin-bottom: 30px;
+	}
+
+	
+
+	.form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+    }
+	
+
+form {
+    border: 0px solid #f1f1f1;
+}

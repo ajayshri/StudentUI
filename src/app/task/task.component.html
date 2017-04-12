@@ -1,0 +1,91 @@
+<div class="row">
+<app-header></app-header>
+</div>
+<div class="col-md-2" style="width: 18.666667%;">
+<app-navigation></app-navigation>
+</div>
+<div class="col-md-9 no-padding">
+
+    <h2>Task List</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a [routerLink]="['/dashboard']">Home</a>
+        </li>
+
+    </ol>
+    <div class="title-action" style="    margin-top: -55px;margin-left: 980px;">
+<a (click)="onAdd()" class="btn btn-primary"><i class="fa fa-plus fa-fw"></i> Add Task</a>
+</div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-4 pull-right">
+                            <input type="text" class="form-control" id="searchname" placeholder="Search By Task Name" type="text" [(ngModel)]="modelFilter.name">
+
+                            <!--<li *ngFor="let model of models | filterBy: modelFilter"></li>-->
+
+                        </div>
+                    </div>
+
+                    <!--{{models| json}}-->
+                    <div class="table-responsive">
+
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <!--<th><a (click)="sort('index')">Sr.No</a></th>-->
+                                    <th><a (click)="sort('name')">Task Name</a> </th>
+                                    <th><a (click)="sort('type')">Task Type</a> </th>
+                                    <th><a (click)="sort('priority')">Task Priority</a> </th>
+                                    <th><a (click)="sort('status')">Task Status</a> </th>
+                                    <th class="text-center" width="140">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let mod of models | paginate: {itemsPerPage: 5, currentPage:page, id: '1'}|filterBy: modelFilter ; let i = index">
+                                    <!--<tr *ngFor="let mod of models| filterBy: modelFilter ; let i = index">-->
+                                    <!--in case you want to show empty message -->
+                                    <li *ngIf="(models | filterBy: stringFilter).length === 0">No matching elements</li>
+
+                                    <td>
+                                        {{mod.name}}
+                                    </td>
+                                    <td>
+                                        {{mod.TaskType}}
+                                    </td>
+                                    <td>
+                                        {{mod.TaskPriority}}
+                                    </td>
+
+                                    <td>
+                                        {{mod.TaskStatus}}
+                                    </td>
+                                    <td>
+                                        <a (click)="update(models,i)" class="btn btn-primary listcss" style="margin-bottom:-2px;">Edit</a>
+<a (click)="deleteCondition(models,i)" class="btn btn-primary listcss" style="margin-bottom:-2px;">Delete</a>
+</td>
+</tr>
+</tbody>
+
+
+
+<tfoot>
+    <tr>
+        <td colspan="5" class="footable-visible text-right">
+        </td>
+    </tr>
+</tfoot>
+</table>
+<pagination-controls (pageChange)="page = $event" id="1" maxSize="5" directionLinks="true" autoHide="true">
+</pagination-controls>`
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

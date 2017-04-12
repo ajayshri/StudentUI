@@ -1,0 +1,71 @@
+<div class="row">
+  <app-header></app-header>
+</div>
+<div class="col-md-2" style="width: 18.666667%;">
+<app-navigation></app-navigation>
+</div>
+
+<div class="col-md-9">
+
+  <div [hidden]="submitted">
+    <h1 style=" font-size: 19px;" >Add Your Task Here : </h1>
+<form #Form="ngForm">
+  <div class="form-group">
+    <label for="name">TaskName</label>
+    <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+      Task Name is required
+    </div>
+    <div class="form-group">
+      <label for="type">TaskType</label>
+      <input type="text" class="form-control" id="TaskType" [(ngModel)]="model.TaskType" name="TaskType">
+    </div>
+    <div class="form-group">
+      <label for="priority">TaskPriority</label>
+      <select class="form-control" id="TaskPriority" [(ngModel)]="model.TaskPriority" name="TaskPriority">
+        <option *ngFor="let priority of Priority" [value]="priority">{{priority}}</option>
+       </select>
+    </div>
+    <div class="form-group">
+      <label for="status">TaskStatus</label>
+      <select class="form-control" id="TaskStatus" [(ngModel)]="model.TaskStatus" name="TaskStatus" required [(ngModel)]="model.TaskStatus"
+        name="TaskStatus" #TaskStatus="ngModel">
+            <option *ngFor="let status of Status" [value]="status">{{status}}</option>
+        </select>
+      <div [hidden]="TaskStatus.valid || TaskStatus.pristine" class="alert alert-danger">
+        TaskStatus is required
+      </div>
+    </div>
+    <button (click)="onSubmit()" class="btn btn-success" [disabled]="!Form.form.valid">Submit</button>
+    <!--<button (click)="onclick()" type="button" class="btn btn-default" (click)="newTask(); Form.reset()"> Add New Task</button>-->
+  </div>
+</form>
+
+
+</div>
+
+
+<!--<div [hidden]="!submitted">
+    <h2>You have submitted the following Task List:</h2>
+    <div class="row">
+      <div class="col-xs-3">TaskName</div>
+      <div class="col-xs-9  pull-left">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">TaskType</div>
+      <div class="col-xs-9 pull-left">{{ model.TaskType }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">TaskPriority</div>
+      <div class="col-xs-9 pull-left">{{ model.TaskPriority }}</div>
+    </div>
+     <div class="row">
+      <div class="col-xs-3">TaskStatus</div>
+      <div class="col-xs-9 pull-left">{{ model.TaskStatus }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+    
+    
+  </div>
+</div>-->
